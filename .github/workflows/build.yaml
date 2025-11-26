@@ -63,39 +63,39 @@ jobs:
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file_glob: true
-          file: build/*
+          file: build-*/*
           tag: ${{ github.ref }}
           overwrite: true
           body: "Windows release built by CI (cross)"
 
-  windows:
-    name: Windows
-    runs-on: windows-2025
+  # windows:
+  #   name: Windows
+  #   runs-on: windows-2025
 
-    env:
-      LUA_VERSIONS: '5.4.2 5.3.6 5.2.4 5.1.5'
+  #   env:
+  #     LUA_VERSIONS: '5.4.2 5.3.6 5.2.4 5.1.5'
 
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          persist-credentials: false
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v2
+  #       with:
+  #         persist-credentials: false
 
-      - name: Prepare environment
-        run: bash ./.ci/install-env-windows
+  #     - name: Prepare environment
+  #       run: bash ./.ci/install-env-windows
 
-      - name: Build and test cffi
-        run: bash ./.ci/build-cffi-windows
+  #     - name: Build and test cffi
+  #       run: bash ./.ci/build-cffi-windows
 
-      - name: Upload binaries to release
-        uses: svenstaro/upload-release-action@v2
-        with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file_glob: true
-          file: build/*
-          tag: ${{ github.ref }}
-          overwrite: true
-          body: "Windows release built by CI"
+  #     - name: Upload binaries to release
+  #       uses: svenstaro/upload-release-action@v2
+  #       with:
+  #         repo_token: ${{ secrets.GITHUB_TOKEN }}
+  #         file_glob: true
+  #         file: build/*
+  #         tag: ${{ github.ref }}
+  #         overwrite: true
+  #         body: "Windows release built by CI"
 
   # mac:
   #   name: MacOS
