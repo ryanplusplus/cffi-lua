@@ -60,7 +60,7 @@ jobs:
 
   windows:
     name: Windows
-    runs-on: windows-2019
+    runs-on: windows-2025
 
     env:
       LUA_VERSIONS: '5.4.2 5.3.6 5.2.4 5.1.5'
