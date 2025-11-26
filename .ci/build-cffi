@@ -241,4 +241,9 @@ EOF
     cd ..
 done
 
+# Zip all build-* folders
+for luaver in ${LUA_VERSIONS}; do
+    zip -r build-${luaver}.zip build-${luaver}-${expected_triplet}
+done
+
 exit 0
