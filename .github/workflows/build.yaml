@@ -75,6 +75,16 @@ jobs:
       - name: Build and test cffi
         run: bash ./.ci/build-cffi-windows
 
+      - name: Upload binaries to release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file_glob: true
+          file: build/*
+          tag: ${{ github.ref }}
+          overwrite: true
+          body: "Windows release built by CI"
+
   mac:
     name: MacOS
     runs-on: macos-latest
